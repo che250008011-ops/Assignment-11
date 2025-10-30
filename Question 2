@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+struct Student {
+    char name[50];
+    int age;
+    char gender[10];
+    char branch[30];
+};
+
+int main() {
+    int size = 100;
+    Student* students = new Student[size];
+
+    cout << "Enter details for " << size << " students:";
+    for (int i = 0; i < size; i++) {
+        cout << "Student " << i + 1 << ":";
+        cout << "Name: ";
+        cin >> students[i].name;
+        cout << "Age: ";
+        cin >> students[i].age;
+        cout << "Gender: ";
+        cin >> students[i].gender;
+        cout << "Branch: ";
+        cin >> students[i].branch;
+    }
+
+    
+    int newSize = 200;
+    Student* newStudents = new Student[newSize];
+
+    
+    for (int i = 0; i < size; i++) {
+        newStudents[i] = students[i];
+    }
+
+    
+    delete[] students;
+    students = newStudents;
+
+    cout << "Array resized to store " << newSize << " students";
+
+    
+    for (int i = size; i < newSize; i++) {
+        cout << "Enter details for student " << i + 1 << ":";
+        cout << "Name: ";
+        cin >> students[i].name;
+        cout << "Age: ";
+        cin >> students[i].age;
+        cout << "Gender: ";
+        cin >> students[i].gender;
+        cout << "Branch: ";
+        cin >> students[i].branch;
+    }
+
+    
+    cout << "Displaying all " << newSize << " students:";
+    for (int i = 0; i < newSize; i++) {
+        cout << "\nStudent " << i + 1 << ":\n";
+        cout << "Name: " << students[i].name << endl;
+        cout << "Age: " << students[i].age << endl;
+        cout << "Gender: " << students[i].gender << endl;
+        cout << "Branch: " << students[i].branch << endl;
+    }
+
+    delete[] students;
+    return 0;
+}
+
