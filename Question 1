@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int size = 100;
+    double* sales = new double[size]; 
+
+    cout << "Enter sales figures for " << size << " items:";
+    for (int i = 0; i < size; i++) {
+        cout << "Sales[" << i + 1 << "]: ";
+        cin >> sales[i];
+    }
+
+    
+    int newSize = 200;
+    double* newSales = new double[newSize];
+
+    
+    for (int i = 0; i < size; i++) {
+        newSales[i] = sales[i];
+    }
+
+    
+    for (int i = size; i < newSize; i++) {
+        newSales[i] = 0.0;
+    }
+
+    
+    delete[] sales;
+    sales = newSales;
+
+    cout << "Array resized successfully to hold " << newSize << " sales figures.";
+
+    
+    for (int i = size; i < newSize; i++) {
+        cout << "Sales[" << i + 1 << "]: ";
+        cin >> sales[i];
+    }
+
+
+    cout << "All Sales Figures:";
+    for (int i = 0; i < newSize; i++) {
+        cout << "Sales[" << i + 1 << "] = " << sales[i] << endl;
+    }
+
+    
+    delete[] sales;
+
+    return 0;
+}
